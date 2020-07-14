@@ -30,7 +30,7 @@ public class Part3 {
             } stringBuilder.replace(stringBuilder.length()-1, stringBuilder.length(), "\n");
         }
 
-        return stringBuilder.toString();
+        return stringBuilder.delete(stringBuilder.length()-1, stringBuilder.length()).toString();
     }
 
     private static String checkWordHasThreeAndMoreLetters(String word){

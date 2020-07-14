@@ -12,7 +12,7 @@ public class Part3Test {
 
         final String expectedString =
                 "when I Was Younger\n" +
-                "I Never Needed\n";
+                "I Never Needed";
         Assert.assertEquals(expectedString, Part3.convert(TEXT));
 
     }
