@@ -1,5 +1,6 @@
 package com.epam.rd.java.basic.practice3;
 
+import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -8,22 +9,21 @@ public class Part1 {
     private static final String TEXT = Util.readFile("part1.txt");
     private static Pattern pattern;
     private static Matcher matcher;
-    private static String regex;
+    private static final String regex = "(.+);((.+)\\s(.+));(([.[^@\\s]]+)@([.[^@\\s]]+)\\.([a-z]+))";
     private static StringBuilder stringBuilder;
     private static String[] arrayEmails = {};
 
     public static void main(String[] args) {
 
-
         Part1.convert1(TEXT);
         Part1.convert2(TEXT);
         Part1.convert3(TEXT);
         Part1.convert4(TEXT);
+        System.out.println(convert4(TEXT));
 
     }
 
     public static String convert1(String input) {
-        regex = "(.+);((.+)\\s(.+));(([.[^@\\s]]+)@([.[^@\\s]]+)\\.([a-z]+))";
         pattern = Pattern.compile(regex);
         stringBuilder = new StringBuilder();
         String[] texts = input.split("\n");
@@ -38,7 +38,6 @@ public class Part1 {
     }
 
     public static String convert2(String input) {
-        regex = "(.+);((.+)\\s(.+));(([.[^@\\s]]+)@([.[^@\\s]]+)\\.([a-z]+))";
         pattern = Pattern.compile(regex);
         stringBuilder = new StringBuilder();
         String[] texts = input.split("\n");
@@ -57,7 +56,6 @@ public class Part1 {
     }
 
     public static String convert3(String input) {
-        regex = "(.+);((.+)\\s(.+));(([.[^@\\s]]+)@([.[^@\\s]]+)\\.([a-z]+))";
         pattern = Pattern.compile(regex);
         stringBuilder = new StringBuilder();
         String[] texts = input.split("\n");
@@ -89,17 +87,17 @@ public class Part1 {
     }
 
     public static String convert4(String input) {
-        regex = "(.+);((.+)\\s(.+));(([.[^@\\s]]+)@([.[^@\\s]]+)\\.([a-z]+))";
         pattern = Pattern.compile(regex);
         stringBuilder = new StringBuilder();
         String[] texts = input.split("\n");
+        Random random = new Random();
 
         for (String newString : texts) {
             matcher = pattern.matcher(newString);
             while (matcher.find()) {
                 stringBuilder.append(matcher.group(0)).append(";");
                 for(int i = 0; i < 4; i++){
-                    stringBuilder.append((int)(10*Math.random()));
+                    stringBuilder.append((random.nextInt(10)));
                 }
                 stringBuilder.append("\n");
             }
