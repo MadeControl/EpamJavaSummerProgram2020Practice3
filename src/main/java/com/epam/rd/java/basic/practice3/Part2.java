@@ -8,8 +8,8 @@ public class Part2 {
     private static final String TEXT = Util.readFile("part2.txt");
     private static int min = 10;
     private static int max = 0;
-    private static String[] arrayWordsOfMinLength = new String[0];
-    private static String[] arrayWordsOfMaxLength = new String[0];
+    private static String[] arrayWordsOfMinLength;
+    private static String[] arrayWordsOfMaxLength;
 
     public static void main(String[] args) {
 
@@ -19,6 +19,8 @@ public class Part2 {
 
     public static String convert(String input) {
 
+        arrayWordsOfMinLength = new String[0];
+        arrayWordsOfMaxLength = new String[0];
         final String regex = "[.[^-',\\s]]+";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher;
