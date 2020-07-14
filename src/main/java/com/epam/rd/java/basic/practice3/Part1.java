@@ -20,9 +20,9 @@ public class Part1 {
         stringBuilder = new StringBuilder();
         String[] texts = input.split("\n");
 
-        for(String newString : texts){
+        for (String newString : texts) {
             matcher = pattern.matcher(newString);
-            while (matcher.find()){
+            while (matcher.find()) {
                 stringBuilder.append(matcher.group(1)).append(": ").append(matcher.group(5)).append("\n");
             }
         }
@@ -35,12 +35,12 @@ public class Part1 {
         stringBuilder = new StringBuilder();
         String[] texts = input.split("\n");
 
-        for(String newString : texts){
+        for (String newString : texts) {
             matcher = pattern.matcher(newString);
-            while (matcher.find()){
+            while (matcher.find()) {
                 stringBuilder
-                        .append(matcher.group(2)) // It will be Surname Name(example: Ivanov Ivan)
-                        .append(" (email: ").append(matcher.group(3))
+                        .append(matcher.group(4)).append(" ").append(matcher.group(3)) // It will be Surname Name(example: Ivanov Ivan)
+                        .append(" (email: ").append(matcher.group(5))
                         .append(")\n");
             }
         }
@@ -53,9 +53,10 @@ public class Part1 {
         pattern = Pattern.compile(regex);
         stringBuilder = new StringBuilder();
         String[] texts = input.split("\n");
-        for(String newString : texts){
+
+        for (String newString : texts) {
             matcher = pattern.matcher(newString);
-            while (matcher.find()){
+            while (matcher.find()) {
                 String[] array = matcher.group(2).split("\\s");
                 stringBuilder
                         .append(array[1]).append(" ").append(array[0]) // It will be Surname Name(example: Ivanov Ivan)
