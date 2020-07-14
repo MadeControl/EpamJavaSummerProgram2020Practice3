@@ -5,12 +5,20 @@ import java.util.regex.Pattern;
 
 public class Part1 {
 
+    private static final String TEXT = Util.readFile("part1.txt");
     private static Pattern pattern;
     private static Matcher matcher;
     private static String regex;
     private static StringBuilder stringBuilder;
+    private static String[] arrayEmails = {};
 
     public static void main(String[] args) {
+
+
+        Part1.convert1(TEXT);
+        Part1.convert2(TEXT);
+        Part1.convert3(TEXT);
+        Part1.convert4(TEXT);
 
     }
 
@@ -49,7 +57,7 @@ public class Part1 {
     }
 
     public static String convert3(String input) {
-        regex = "(.+);(.+);(([.[^@\\s]]+)@([.[^@\\s]]+)\\.([a-z]+))";
+        regex = "(.+);((.+)\\s(.+));(([.[^@\\s]]+)@([.[^@\\s]]+)\\.([a-z]+))";
         pattern = Pattern.compile(regex);
         stringBuilder = new StringBuilder();
         String[] texts = input.split("\n");
@@ -57,12 +65,23 @@ public class Part1 {
         for (String newString : texts) {
             matcher = pattern.matcher(newString);
             while (matcher.find()) {
-                String[] array = matcher.group(2).split("\\s");
-                stringBuilder
-                        .append(array[1]).append(" ").append(array[0]) // It will be Surname Name(example: Ivanov Ivan)
-                        .append(" (email: ").append(matcher.group(3))
-                        .append(")\n");
+                String string = matcher.group(7) + "." + matcher.group(8);
+                addEmailInArray(string);
             }
+        }
+
+        for(String email : arrayEmails){
+            stringBuilder.append(email).append(" ==> ");
+            for(String newString : texts){
+                matcher = pattern.matcher(newString);
+                while (matcher.find()) {
+                    String tempEmail = matcher.group(7) + "." + matcher.group(8);
+                    if(tempEmail.equals(email)){
+                        stringBuilder.append(matcher.group(1)).append(", ");
+                    }
+                }
+            }
+            stringBuilder.replace(stringBuilder.length()-2, stringBuilder.length(), "\n");
         }
         return stringBuilder.toString();
 
@@ -70,6 +89,33 @@ public class Part1 {
     }
 
     public static String convert4(String input) {
-        return null;
+        regex = "(.+);((.+)\\s(.+));(([.[^@\\s]]+)@([.[^@\\s]]+)\\.([a-z]+))";
+        pattern = Pattern.compile(regex);
+        stringBuilder = new StringBuilder();
+        String[] texts = input.split("\n");
+
+        for (String newString : texts) {
+            matcher = pattern.matcher(newString);
+            while (matcher.find()) {
+                stringBuilder.append(matcher.group(0)).append(";");
+                for(int i = 0; i < 4; i++){
+                    stringBuilder.append((int)(10*Math.random()));
+                }
+                stringBuilder.append("\n");
+            }
+        }
+        return stringBuilder.toString();
+    }
+
+    private static void addEmailInArray(String email){
+        for (String arrayEmail : arrayEmails) {
+            if (email.equals(arrayEmail)) {
+                return;
+            }
+        }
+        String[] oldArrayEmails = arrayEmails;
+        arrayEmails = new String[arrayEmails.length+1];
+        System.arraycopy(oldArrayEmails, 0, arrayEmails, 0, oldArrayEmails.length);
+        arrayEmails[arrayEmails.length-1] = email;
     }
 }

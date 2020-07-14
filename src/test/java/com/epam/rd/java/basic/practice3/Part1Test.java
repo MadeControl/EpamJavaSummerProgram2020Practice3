@@ -37,12 +37,17 @@ public class Part1Test {
     public void convert3Test(){
 
         final String expectedString =
-                "Ivanov Ivan (email: ivanov@mail.com)\n" +
-                        "Петров Петр (email: petrov@google.com)\n" +
-                        "Obama Barack (email: obama@google.com)\n" +
-                        "Буш Джордж (email: bush@mail.com)\n";
+                        "mail.com ==> ivanov, bush\n" +
+                        "google.com ==> петров, obama\n";
 
         Assert.assertEquals(expectedString, Part1.convert3(TEXT));
+
+    }
+
+    @Test
+    public void convert4Test(){
+
+        Assert.assertNotNull(Part1.convert4(TEXT));
 
     }
 
