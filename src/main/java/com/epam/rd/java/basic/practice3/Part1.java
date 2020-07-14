@@ -18,11 +18,10 @@ public class Part1 {
     }
 
     public static String convert1(String input) {
-//        regex = "([.[^@\\s]]+)@([.[^@\\s]]+)\\.([a-z]+)";
         regex = "(.+);(.+);(.+)";
         pattern = Pattern.compile(regex);
         stringBuilder = new StringBuilder();
-        String[] texts = TEXT.split("\n");
+        String[] texts = input.split("\n");
 
         for(String newString : texts){
             matcher = pattern.matcher(newString);
@@ -37,7 +36,7 @@ public class Part1 {
         regex = "(.+);(.+);(.+)";
         pattern = Pattern.compile(regex);
         stringBuilder = new StringBuilder();
-        String[] texts = TEXT.split("\n");
+        String[] texts = input.split("\n");
 
         for(String newString : texts){
             matcher = pattern.matcher(newString);
@@ -57,8 +56,7 @@ public class Part1 {
         regex = "(.+);(.+);(([.[^@\\s]]+)@([.[^@\\s]]+)\\.([a-z]+))";
         pattern = Pattern.compile(regex);
         stringBuilder = new StringBuilder();
-        String[] texts = TEXT.split("\n");
-        String[] emails = new String[2];
+        String[] texts = input.split("\n");
         for(String newString : texts){
             matcher = pattern.matcher(newString);
             while (matcher.find()){
