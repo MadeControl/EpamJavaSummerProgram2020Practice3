@@ -9,7 +9,7 @@ public class Part1 {
     private static final String TEXT = Util.readFile("part1.txt");
     private static Pattern pattern;
     private static Matcher matcher;
-    private static final String regex = "(.+);((.+)\\s(.+));(([.[^@\\s]]+)@([.[^@\\s]]+)\\.([a-z]+))";
+    private static final String REGEX = "(.+);((.+)\\s(.+));(([.[^@\\s]]+)@([.[^@\\s]]+)\\.([a-z]+))";
     private static StringBuilder stringBuilder;
     private static String[] arrayEmails = {};
 
@@ -19,12 +19,11 @@ public class Part1 {
         Part1.convert2(TEXT);
         Part1.convert3(TEXT);
         Part1.convert4(TEXT);
-        System.out.println(convert4(TEXT));
 
     }
 
     public static String convert1(String input) {
-        pattern = Pattern.compile(regex);
+        pattern = Pattern.compile(REGEX);
         stringBuilder = new StringBuilder();
         String[] texts = input.split("\n");
 
@@ -38,7 +37,7 @@ public class Part1 {
     }
 
     public static String convert2(String input) {
-        pattern = Pattern.compile(regex);
+        pattern = Pattern.compile(REGEX);
         stringBuilder = new StringBuilder();
         String[] texts = input.split("\n");
 
@@ -56,7 +55,7 @@ public class Part1 {
     }
 
     public static String convert3(String input) {
-        pattern = Pattern.compile(regex);
+        pattern = Pattern.compile(REGEX);
         stringBuilder = new StringBuilder();
         String[] texts = input.split("\n");
 
@@ -87,17 +86,18 @@ public class Part1 {
     }
 
     public static String convert4(String input) {
-        pattern = Pattern.compile(regex);
+        pattern = Pattern.compile(REGEX);
         stringBuilder = new StringBuilder();
         String[] texts = input.split("\n");
-        Random random = new Random();
+        final Random random = new Random();
 
         for (String newString : texts) {
             matcher = pattern.matcher(newString);
             while (matcher.find()) {
                 stringBuilder.append(matcher.group(0)).append(";");
                 for(int i = 0; i < 4; i++){
-                    stringBuilder.append((random.nextInt(10)));
+                    int digit = (random.nextInt(10));
+                    stringBuilder.append(digit);
                 }
                 stringBuilder.append("\n");
             }
