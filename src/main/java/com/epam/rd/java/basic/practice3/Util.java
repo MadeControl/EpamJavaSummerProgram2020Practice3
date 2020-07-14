@@ -8,12 +8,12 @@ public class Util {
     private static final String ENCODING = "Cp1251"; //you can change it to UTF-8
 
     public static String readFile(String path) {
-        String res = null;
+        String res;
         try {
             byte[] bytes = Files.readAllBytes(Paths.get(path));
             res = new String(bytes, ENCODING);
         } catch (IOException ex) {
-            ex.printStackTrace();
+            return null;
         }
         return res;
     }
