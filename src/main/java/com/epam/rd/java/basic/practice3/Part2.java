@@ -6,8 +6,8 @@ import java.util.regex.Pattern;
 public class Part2 {
 
     private static final String TEXT = Util.readFile("part2.txt");
-    private static int min = 10;
-    private static int max = 0;
+    private static int min;
+    private static int max;
     private static String[] arrayWordsOfMinLength;
     private static String[] arrayWordsOfMaxLength;
 
