@@ -11,7 +11,7 @@ public class Part2Test {
         final String TEXT = Util.readFile("part2.txt");
         final String expectedString =
                 "Min: I, s, m\n" +
-                "Max: younger, anybody, assured, changed\n";
+                "Max: younger, anybody, assured, changed";
         Assert.assertEquals(expectedString, Part2.convert(TEXT));
 
     }

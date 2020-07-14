@@ -34,7 +34,8 @@ public class Part2 {
         stringBuilder.append("Min: ");
         fillStringBuilder(stringBuilder, arrayWordsOfMinLength);
         stringBuilder.append("Max: ");
-        return fillStringBuilder(stringBuilder, arrayWordsOfMaxLength).toString();
+        fillStringBuilder(stringBuilder, arrayWordsOfMaxLength);
+        return stringBuilder.delete(stringBuilder.length()-1, stringBuilder.length()).toString();
 
     }
 
