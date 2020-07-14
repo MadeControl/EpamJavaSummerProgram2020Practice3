@@ -1,6 +1,6 @@
 package com.epam.rd.java.basic.practice3;
 
-import java.util.Random;
+import java.security.SecureRandom;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -12,7 +12,7 @@ public class Part1 {
     private static final String REGEX = "(.+);((.+)\\s(.+));(([.[^@\\s]]+)@([.[^@\\s]]+)\\.([a-z]+))";
     private static StringBuilder stringBuilder;
     private static String[] arrayEmails = {};
-    private static final Random RANDOM = new Random();
+    private static final SecureRandom RANDOM = new SecureRandom();
 
     public static void main(String[] args) {
 
