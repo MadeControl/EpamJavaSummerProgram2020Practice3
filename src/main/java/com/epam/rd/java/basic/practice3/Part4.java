@@ -2,7 +2,6 @@ package com.epam.rd.java.basic.practice3;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.NoSuchElementException;
 
 public class Part4 {
 
@@ -28,7 +27,8 @@ public class Part4 {
             return stringBuilder.toString();
 
         } catch (NoSuchAlgorithmException ex) {
-            throw new NoSuchElementException();
+            ex.printStackTrace();
+            return null;
         }
     }
 
