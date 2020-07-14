@@ -12,6 +12,7 @@ public class Part1 {
     private static final String REGEX = "(.+);((.+)\\s(.+));(([.[^@\\s]]+)@([.[^@\\s]]+)\\.([a-z]+))";
     private static StringBuilder stringBuilder;
     private static String[] arrayEmails = {};
+    private static final Random RANDOM = new Random();
 
     public static void main(String[] args) {
 
@@ -89,14 +90,13 @@ public class Part1 {
         pattern = Pattern.compile(REGEX);
         stringBuilder = new StringBuilder();
         String[] texts = input.split("\n");
-        final Random random = new Random();
 
         for (String newString : texts) {
             matcher = pattern.matcher(newString);
             while (matcher.find()) {
                 stringBuilder.append(matcher.group(0)).append(";");
                 for(int i = 0; i < 4; i++){
-                    int digit = (random.nextInt(10));
+                    int digit = (RANDOM.nextInt(10));
                     stringBuilder.append(digit);
                 }
                 stringBuilder.append("\n");
