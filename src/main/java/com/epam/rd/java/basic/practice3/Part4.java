@@ -1,14 +1,11 @@
 package com.epam.rd.java.basic.practice3;
 
-import com.sun.org.slf4j.internal.Logger;
-import com.sun.org.slf4j.internal.LoggerFactory;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.logging.Logger;
 
 public class Part4 {
-
-    private static Logger logger = LoggerFactory.getLogger(Part4.class);
 
     public static void main(String[] args) {
 
@@ -32,7 +29,6 @@ public class Part4 {
             return stringBuilder.toString();
 
         } catch (NoSuchAlgorithmException ex) {
-            logger.error(ex.getMessage());
             return null;
         }
     }
