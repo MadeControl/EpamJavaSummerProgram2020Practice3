@@ -21,6 +21,8 @@ public class Part2 {
 
         arrayWordsOfMinLength = new String[0];
         arrayWordsOfMaxLength = new String[0];
+        min = 10;
+        max = 0;
         final String regex = "[.[^-',\\s]]+";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher;
