@@ -6,6 +6,8 @@ import java.util.regex.Pattern;
 public class Part6 {
 
     private static final String TEXT = Util.readFile("part6.txt");
+    private static final String REGEX = "[.[^\\s\\n]]+";
+    private static final Pattern PATTERN = Pattern.compile(REGEX);
 
     public static void main(String[] args) {
 
@@ -15,23 +17,19 @@ public class Part6 {
 
     public static String convert(String input) {
 
-        final String regex = "[.[^\\s\\n]]+";
-        Pattern pattern = Pattern.compile(regex);
-        Matcher matcher1;
-        Matcher matcher2;
-        String[] stringsOfText1 = input.split("\n");
+        Matcher matcher1, matcher2;
+        String[] stringsOfText = input.split("\n");
         StringBuilder stringBuilder = new StringBuilder();
 
-        for (String string1 : stringsOfText1) {
+        for (String string : stringsOfText) {
 
-            matcher1 = pattern.matcher(string1);
+            matcher1 = PATTERN.matcher(string);
 
             while (matcher1.find()) {
 
                 int count = 0;
-                String tempWord;
-                tempWord = matcher1.group();
-                matcher2 = pattern.matcher(input);
+                String tempWord = matcher1.group();;
+                matcher2 = PATTERN.matcher(input);
 
                 while (matcher2.find()) {
 
@@ -39,21 +37,18 @@ public class Part6 {
 
                         count++;
                         if (count >= 2) {
+                            stringBuilder.append("_");
                             break;
                         }
 
                     }
 
                 }
-                if(count >= 2){
-                    stringBuilder.append("_");
-                }
                 stringBuilder.append(tempWord).append(" ");
             }
             stringBuilder.replace(stringBuilder.length()-1, stringBuilder.length(), "\n");
 
         }
-
-        return stringBuilder.toString();
+        return stringBuilder.delete(stringBuilder.length()-1, stringBuilder.length()).toString();
     }
 }

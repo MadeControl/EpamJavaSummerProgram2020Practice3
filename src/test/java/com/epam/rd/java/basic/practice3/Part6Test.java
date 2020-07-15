@@ -16,7 +16,7 @@ public class Part6Test {
                 "_test\n" +
                 "_Это _тест\n" +
                 "_Это _также _тест\n" +
-                "И это _также тесты\n";
+                "И это _также тесты";
 
         Assert.assertEquals(expectedString, Part6.convert(TEXT));
 

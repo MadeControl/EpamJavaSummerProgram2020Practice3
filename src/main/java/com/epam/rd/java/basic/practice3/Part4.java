@@ -1,6 +1,5 @@
 package com.epam.rd.java.basic.practice3;
 
-
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
