@@ -17,7 +17,8 @@ public class Part6 {
 
     public static String convert(String input) {
 
-        Matcher matcher1, matcher2;
+        Matcher matcher1;
+        Matcher matcher2;
         String[] stringsOfText = input.split("\n");
         StringBuilder stringBuilder = new StringBuilder();
 
@@ -28,7 +29,7 @@ public class Part6 {
             while (matcher1.find()) {
 
                 int count = 0;
-                String tempWord = matcher1.group();;
+                String tempWord = matcher1.group();
                 matcher2 = PATTERN.matcher(input);
 
                 while (matcher2.find()) {
